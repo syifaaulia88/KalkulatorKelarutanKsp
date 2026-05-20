@@ -33,7 +33,7 @@ if st.button("Hitung & Prediksi"):
     
     st.write(f"**Nilai $Q_{{sp}}$ yang dihitung:** {qsp:.2e}")
     
-    # 5. Logika if/else untuk kesimpulan
+    # 5. Logika if/else untuk kesimpula
     if qsp > ksp:
         st.error("Hasil: Qsp > Ksp. **Terjadi Endapan!** ⬇️")
     elif qsp == ksp:
