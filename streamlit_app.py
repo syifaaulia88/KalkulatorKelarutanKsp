@@ -10,7 +10,7 @@ st.markdown("""
     /* Mengubah warna latar belakang Sidebar */
     [data-testid="stSidebar"] {
         background-image: linear-gradient(#1e3c72, #2a5298);
-        color: pink;
+        color: white;
     }
     /* Mengubah warna teks di dalam sidebar agar putih semua */
     [data-testid="stSidebar"] .st-emotion-cache-17w799d, [data-testid="stSidebar"] p {
@@ -19,7 +19,7 @@ st.markdown("""
     /* Mengubah warna tombol utama saat diarahkan kursor (hover) */
     .stButton>button {
         background-color: #009688;
-        color: pink;
+        color: white;
         border-radius: 8px;
         border: none;
         box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
