@@ -7,18 +7,29 @@ st.set_page_config(page_title="ChemSolv: Smart Solution for Solubility", layout=
 # CSS UNTUK WARNA 
 st.markdown("""
     <style>
-    /* Mengubah warna latar belakang Sidebar */
+    /* 1. Mengubah Latar Belakang Layar Utama menjadi PINK */
+    [data-testid="stAppViewContainer"] {
+        background-color: #ffe3e8 !important;
+    }
+    
+    /* Menyelaraskan warna area atas (header) agar ikut menjadi pink */
+    [data-testid="stHeader"] {
+        background-color: rgba(0,0,0,0) !important;
+    }
+
+    /* 2. Mengubah Latar Belakang Sidebar menjadi MERAH (Gradasi Elegan) */
     [data-testid="stSidebar"] {
-        background-image: linear-gradient(#1e3c72, #2a5298);
-        color: white;
+        background-image: linear-gradient(#e53935, #b71c1c) !important;
     }
-    /* Mengubah warna teks di dalam sidebar agar putih semua */
-    [data-testid="stSidebar"] .st-emotion-cache-17w799d, [data-testid="stSidebar"] p {
-        color: #f0f2f6 !important;
+    
+    /* Mengubah warna teks di dalam sidebar agar putih bersih */
+    [data-testid="stSidebar"] .st-emotion-cache-17w799d, [data-testid="stSidebar"] p, [data-testid="stSidebar"] h1 {
+        color: #ffffff !important;
     }
-    /* Mengubah warna tombol utama saat diarahkan kursor (hover) */
+    
+    /* Mengubah warna tombol utama agar kontras di latar pink */
     .stButton>button {
-        background-color: #009688;
+        background-color: #d81b60;
         color: white;
         border-radius: 8px;
         border: none;
@@ -26,8 +37,8 @@ st.markdown("""
         transition: 0.3s;
     }
     .stButton>button:hover {
-        background-color: #00796b;
-        color: #e0f2f1;
+        background-color: #ad1457;
+        color: white;
         transform: scale(1.02);
     }
     </style>
