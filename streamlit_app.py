@@ -2,7 +2,7 @@ import streamlit as st
 import math
 
 # Konfigurasi Halaman Web
-st.set_page_config(page_title="Kalkulator Kelarutan Super", layout="centered", page_icon="🧪")
+st.set_page_config(page_title="ChemSolv: Kelarutan & Ksp Master", layout="centered", page_icon="🧪")
 
 # --- Bagian Navigasi (Sidebar) ---
 st.sidebar.title("🧭 Menu Navigasi")
