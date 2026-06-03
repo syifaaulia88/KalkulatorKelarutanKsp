@@ -4,6 +4,21 @@ import math
 # Konfigurasi Halaman Web
 st.set_page_config(page_title="ChemSolv: Smart Solution for Solubility", layout="centered", page_icon="🧪")
 
+# CSS futuristik gradasi
+st.markdown(f"""
+    <style>
+    @import
+url('https://fonts.googleapis.com/css2?family=Orbitron &display=swap');
+
+    .stApp {{
+        background image:
+url("data:image/gif;base64,{encoded_gif}"); 
+        background-size: cover; 
+        background-position: center; 
+        background-repeat: no-repeat; 
+        background-attachment: fixed;
+    }} 
+
 # --- Bagian Navigasi (Sidebar) ---
 st.sidebar.title("🧭 Menu")
 menu = st.sidebar.radio(
