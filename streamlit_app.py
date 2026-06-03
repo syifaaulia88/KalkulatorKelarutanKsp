@@ -19,7 +19,7 @@ st.markdown("""
     /* Mengubah warna tombol utama saat diarahkan kursor (hover) */
     .stButton>button {
         background-color: #009688;
-        color: white;
+        color: pink;
         border-radius: 8px;
         border: none;
         box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
