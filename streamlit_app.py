@@ -5,7 +5,7 @@ import math
 st.set_page_config(page_title="ChemSolv: Kelarutan & Ksp Master", layout="centered", page_icon="🧪")
 
 # --- Bagian Navigasi (Sidebar) ---
-st.sidebar.title("🧭 Menu Navigasi")
+st.sidebar.title("🧭 Menu")
 menu = st.sidebar.radio(
     "Pilih Fitur Kalkulator:",
     ("1. Kalkulator Kelarutan & Ksp", "2. Prediksi Endapan (Qsp vs Ksp)")
@@ -18,7 +18,7 @@ st.sidebar.caption("Aplikasi ini dibuat sebagai alat bantu pembelajaran kesetimb
 # FITUR 1: KALKULATOR KELARUTAN & KSP
 # ==========================================
 if menu == "1. Kalkulator Kelarutan & Ksp":
-    st.title("🧪 Kalkulator Kelarutan dan Ksp")
+    st.title("🧪 ChemSolv: Kalkulator Kelarutan dan Ksp")
     st.markdown("Hitung **Kelarutan (s)** dari **Ksp**, atau sebaliknya, berdasarkan stoikiometri senyawa.")
     st.divider()
 
