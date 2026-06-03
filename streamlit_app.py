@@ -2,70 +2,111 @@ import streamlit as st
 import math
 
 # Konfigurasi Halaman Web
-st.set_page_config(page_title="ChemSolv: Smart Solution for Solubility", layout="centered", page_icon="🧪")
+st.set_page_config(page_title="ChemSolv: Smart Solution for Solubility", layout="wide", page_icon="🧪")
 
-# CSS UNTUK WARNA 
+# 2. Injeksi CSS Kustom (Sidebar Hijau Pastel, Menu & Tombol Pink Tua)
 st.markdown("""
     <style>
-    /* 1. Mengubah Latar Belakang Layar Utama menjadi PINK */
+    /* Mengubah latar belakang layar utama menjadi Pink Soft/Pastel agar tidak putih kaku */
     [data-testid="stAppViewContainer"] {
-        background-color: #ffe3e8 !important;
-    }
-    
-    /* Menyelaraskan warna area atas (header) agar ikut menjadi pink */
-    [data-testid="stHeader"] {
-        background-color: rgba(0,0,0,0) !important;
+        background-color: #fff0f3 !important;
     }
 
-    /* 2. Mengubah Latar Belakang Sidebar menjadi MERAH (Gradasi Elegan) */
+    /* Mengubah latar belakang Sidebar menjadi HIJAU PASTEL */
     [data-testid="stSidebar"] {
-        background-image: linear-gradient(#e53935, #b71c1c) !important;
+        background-color: #e2f0d9 !important; /* Hijau pastel lembut */
     }
     
-    /* Mengubah warna teks di dalam sidebar agar putih bersih */
-    [data-testid="stSidebar"] .st-emotion-cache-17w799d, [data-testid="stSidebar"] p, [data-testid="stSidebar"] h1 {
-        color: #ffffff !important;
+    /* Mengubah warna teks judul "Menu Kalkulator" menjadi PINK TUA */
+    .judul-menu {
+        color: #d81b60 !important; /* Pink tua */
+        font-size: 26px;
+        font-weight: bold;
+        margin-bottom: 25px;
+        margin-top: -20px;
     }
     
-    /* Mengubah warna tombol utama agar kontras di latar pink */
-    .stButton>button {
-        background-color: #d81b60;
-        color: white;
-        border-radius: 8px;
-        border: none;
+    /* Mengubah gaya tombol di sidebar (Warna PINK TUA & Membulat) */
+    [data-testid="stSidebar"] .stButton>button {
+        background-color: #d81b60 !important; /* Pink tua */
+        color: white !important;
+        border-radius: 15px !important; /* Membuat sudut membulat */
+        border: none !important;
+        padding: 10px 20px !important;
+        font-size: 15px !important;
+        font-weight: bold !important;
+        width: auto !important; /* Lebar otomatis mengikuti panjang teks */
+        display: block !important;
+        margin-bottom: -5px !important; /* Jarak antar tombol */
         box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
-        transition: 0.3s;
+        transition: 0.2s;
     }
-    .stButton>button:hover {
-        background-color: #ad1457;
-        color: white;
-        transform: scale(1.02);
+    
+    /* Efek saat tombol di sidebar disentuh kursor (Hover) */
+    [data-testid="stSidebar"] .stButton>button:hover {
+        background-color: #c2185b !important; /* Pink lebih gelap saat di-hover */
+        transform: scale(1.03);
+    }
+    
+    /* Merapikan tampilan container input di layar utama */
+    .stHeader h2 {
+        color: #d81b60;
     }
     </style>
 """, unsafe_allow_html=True)
 
-# --- Bagian Navigasi (Sidebar) ---
-st.sidebar.title("🧭 Menu")
-menu = st.sidebar.radio(
-    "Pilih Fitur Kalkulator:",
-    ("1. Kalkulator Kelarutan & Ksp", "2. Prediksi Endapan (Qsp vs Ksp)")
-)
+if 'page' not in st.session_state: 
+    st.session_state['page'] = "Home" 
+with st.sidebar:
+    st.title("✨ Menu ChemSolv ✨")
+    if st.button("Home"): 
+        st.session_state['page'] = "Home"
+    
+    if st.button("Kalkulator Ksp"): 
+        st.session_state['page'] = "Kalkulator Ksp"
+        
+    if st.button("Prediksi Endapan"):
+        st.session_state['page'] = 'Prediksi Endapan'
+        
+    if st.button("Tentang Kami"):
+        st.session_state['page'] = 'Tentang Kami'
+    page = st.session_state['page'] 
+    st.sidebar.divider()
 
-st.sidebar.divider()
-st.sidebar.caption("Aplikasi ini dibuat sebagai alat bantu pembelajaran kesetimbangan kimia.")
+
+if page == "Home":
+    st.title("🧪 ChemSolv: Smart Solution for Solubility")
+    st.subheader("Selamat Datang di aplikasi ChemSolv!!")
+    st.write("""
+
+Dalam kimia fisik dan kimia analisis, memahami serta menghitung kesetimbangan larutan merupakan keterampilan dasar yang sangat penting. Materi kesetimbangan, mulai dari menentukan kelarutan suatu zat hingga memprediksi kapan endapan akan mulai terbentuk, menjadi bagian tak terpisahkan dari praktikum maupun kegiatan analisis di laboratorium. Namun, tidak jarang pelajar atau praktisi merasa kesulitan ketika harus melakukan perhitungan ini secara manual, apalagi saat menghadapi rumus stoikiometri ion yang berbeda-beda serta perhitungan eksponen yang cukup rumit.
+​Sebagai respons terhadap kebutuhan tersebut, kami menghadirkan ChemSolv - Kalkulator Ksp, sebuah aplikasi berbasis web yang dirancang khusus untuk membantu pengguna dalam melakukan berbagai perhitungan kesetimbangan kimia larutan dengan cepat dan akurat. Aplikasi ini mencakup fitur:
+
+* Perhitungan Kelarutan (s) secara otomatis berdasarkan nilai Ksp yang diketahui.
+* Perhitungan Konstanta Ksp secara instan dari data kelarutan senyawa.
+* Prediksi Pembentukan Endapan dengan membandingkan nilai Quotient Reaksi (Qsp) dan Ksp.
+* Dukungan Multi-Stoikiometri untuk berbagai bentuk rumus senyawa (seperti tipe AB, AB₂, AB₃, hingga A₂B₃).
+
+​Aplikasi ini dikembangkan sebagai bagian dari Tugas Akhir LPK (Laporan Praktikum Kimia) dengan tujuan memberikan kontribusi nyata dalam pembelajaran kimia larutan dan aktivitas laboratorium, khususnya di bidang kesetimbangan kimia. Dengan antarmuka yang sederhana, estetis, dan fungsional, diharapkan ChemSolv dapat menjadi alat bantu yang andal bagi siswa, mahasiswa, guru, analis, maupun siapa saja yang sedang mempelajari atau bekerja dengan kimia larutan.
+​Gunakan aplikasi ini untuk memperkuat pemahaman konsep dan meningkatkan ketelitian dalam perhitungan kimia Anda. 
+
+Selamat menggunakan, dan semoga bermanfaat!
+
+    """)
 
 # ==========================================
 # FITUR 1: KALKULATOR KELARUTAN & KSP
 # ==========================================
-if menu == "1. Kalkulator Kelarutan & Ksp":
-    st.title("🧪 ChemSolv: Kalkulator Kelarutan dan Ksp")
+elif page == "Kalkulator Ksp":
+    st.title("🧪 ChemSolv: Smart Solution for Solubility")
+    st.subheader("📲 Kalkulator Kelarutan dan Ksp")
     st.markdown("Hitung **Kelarutan (s)** dari **Ksp**, atau sebaliknya, berdasarkan stoikiometri senyawa.")
     st.divider()
 
-    mode = st.radio("Pilih Jenis Perhitungan:", 
+    mode = st.radio("**Pilih Jenis Perhitungan:**", 
                     ("Hitung Kelarutan (s) dari nilai Ksp", "Hitung Ksp dari nilai Kelarutan (s)"))
 
-    senyawa_type = st.selectbox("Pilih Jenis Senyawa (Berdasarkan Stoikiometri):", 
+    senyawa_type = st.selectbox("**Pilih Jenis Senyawa (Berdasarkan Stoikiometri):**", 
                                 ("AB (Contoh: AgCl, BaSO₄)", 
                                  "AB₂ atau A₂B (Contoh: PbCl₂, Ag₂CrO₄)", 
                                  "AB₃ atau A₃B (Contoh: Al(OH)₃, Ag₃PO₄)", 
@@ -74,7 +115,7 @@ if menu == "1. Kalkulator Kelarutan & Ksp":
 
     # Logika Perhitungan: Kelarutan (s) dari Ksp
     if mode == "Hitung Kelarutan (s) dari nilai Ksp":
-        ksp_val = st.number_input("Masukkan Nilai Ksp (Gunakan format e, contoh: 1.0e-10):", 
+        ksp_val = st.number_input("**Masukkan Nilai Ksp {Gunakan format e (e adalah × 10 pangkat), contoh: 1.0e-10}:**", 
                                   value=1.0e-10, format="%.2e", step=1e-11)
         
         if st.button("Hitung Kelarutan (s)"):
@@ -97,10 +138,14 @@ if menu == "1. Kalkulator Kelarutan & Ksp":
 
     # Logika Perhitungan: Ksp dari Kelarutan (s)
     else:
-        s_val = st.number_input("Masukkan Nilai Kelarutan (s) dalam mol/L (contoh: 1.0e-5):", 
-                                value=1.0e-5, format="%.2e", step=1e-6)
+       s_val = st.number_input(
+    "Masukkan Nilai Kelarutan (s) dalam mol/L (contoh: 1 × 10⁻⁵):",
+    value=1.0e-5,
+    format="%.2e",
+    step=1e-6
+)
         
-        if st.button("Hitung Nilai Ksp"):
+       if st.button("Hitung Nilai Ksp"):
             if "AB " in senyawa_type:
                 ksp = s_val ** 2
                 rumus = r"K_{sp} = s^2"
@@ -121,13 +166,14 @@ if menu == "1. Kalkulator Kelarutan & Ksp":
 # ==========================================
 # FITUR 2: PREDIKSI ENDAPAN (Qsp vs Ksp)
 # ==========================================
-elif menu == "2. Prediksi Endapan (Qsp vs Ksp)":
-    st.title("⚖️ Kalkulator Prediksi Endapan")
+elif page == "Prediksi Endapan":
+    st.title("🧪 ChemSolv: Smart Solution for Solubility")
+    st.subheader("⬇️ Prediksi Endapan")
     st.markdown("Bandingkan nilai **Quotient Reaksi (Qsp)** dengan **Ksp** untuk memprediksi apakah suatu campuran akan menghasilkan endapan.")
     st.divider()
 
     st.subheader("1. Data Konstanta Ksp")
-    ksp = st.number_input("Masukkan nilai Ksp:", format="%e", value=1.0e-10)
+    ksp = st.number_input("**Masukkan nilai Ksp {Gunakan format e (e adalah × 10 pangkat), contoh: 1.0e-10}:**", format="%e", value=1.0e-10)
 
     st.subheader("2. Konsentrasi Ion dalam Campuran")
     kolom_kation, kolom_anion = st.columns(2)
@@ -155,6 +201,30 @@ elif menu == "2. Prediksi Endapan (Qsp vs Ksp)":
         if qsp > ksp:
             st.error("Hasil: Qsp > Ksp. **Terjadi Endapan!** ⬇️")
         elif qsp == ksp:
-            st.warning("Hasil: Qsp = Ksp. **Larutan Tepat Jenuh** (Belum mengendap). ⚖️")
+            st.warning("Hasil: Qsp = Ksp. **Larutan Tepat Jenuh** (Belum mengendap). ❌")
         else:
             st.success("Hasil: Qsp < Ksp. **Tidak Terjadi Endapan** (Semua larut). 💧")
+
+#OKE#
+elif page == "Tentang Kami":
+    st.title("🧪 ChemSolv: Smart Solution for Solubility")
+    st.write("""
+
+👨‍💻 Tim Pengembang
+Aplikasi ini merupakan hasil Proyek Tugas Website untuk mata kuliah Logika Pemrograman Komputer.
+
+👥 Anggota Kelompok:
+
+- Athiyah Amini Azzahra — 2560587  
+- Ryel Fandralaro  — 2560766 
+- Syifa Aulia Farani Pasha   — 2560792  
+- Zahra Fitria Sukmawan  — 2560809  
+- Zalika Imani Hamida  — 2560810  
+Kelas: 1D
+
+🎓 Program Studi: Analisis Kimia
+🏛️ Politeknik AKA Bogor
+
+    """)
+
+    
