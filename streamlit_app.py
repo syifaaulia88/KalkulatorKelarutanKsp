@@ -4,30 +4,34 @@ import math
 # Konfigurasi Halaman Web
 st.set_page_config(page_title="ChemSolv: Smart Solution for Solubility", layout="centered", page_icon="🧪")
 
-# CSS futuristik gradasi
-st.markdown(f"""
+# CSS UNTUK WARNA 
+st.markdown("""
     <style>
-    @import
-url('https://fonts.googleapis.com/css2?family=Orbitron &display=swap');
-
-    .stApp {{
-        background image:
-url("data:image/gif;base64,{encoded_gif}"); 
-        background-size: cover; 
-        background-position: center; 
-        background-repeat: no-repeat; 
-        background-attachment: fixed;
-    }} 
-
-    .stApp::before {{ 
-        content: ""; 
-        position: fixed; 
-        top: 0; 
-        left: 0; 
-        width: 100vw; 
-        height: 100vh; 
-        background-color: rgba(255,255,255,0.25); z-index: -1; 
-    }} 
+    /* Mengubah warna latar belakang Sidebar */
+    [data-testid="stSidebar"] {
+        background-image: linear-gradient(#1e3c72, #2a5298);
+        color: white;
+    }
+    /* Mengubah warna teks di dalam sidebar agar putih semua */
+    [data-testid="stSidebar"] .st-emotion-cache-17w799d, [data-testid="stSidebar"] p {
+        color: #f0f2f6 !important;
+    }
+    /* Mengubah warna tombol utama saat diarahkan kursor (hover) */
+    .stButton>button {
+        background-color: #009688;
+        color: white;
+        border-radius: 8px;
+        border: none;
+        box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
+        transition: 0.3s;
+    }
+    .stButton>button:hover {
+        background-color: #00796b;
+        color: #e0f2f1;
+        transform: scale(1.02);
+    }
+    </style>
+""", unsafe_allow_html=True)
 
 # --- Bagian Navigasi (Sidebar) ---
 st.sidebar.title("🧭 Menu")
