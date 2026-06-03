@@ -19,6 +19,16 @@ url("data:image/gif;base64,{encoded_gif}");
         background-attachment: fixed;
     }} 
 
+    .stApp::before {{ 
+        content: ""; 
+        position: fixed; 
+        top: 0; 
+        left: 0; 
+        width: 100vw; 
+        height: 100vh; 
+        background-color: rgba(255,255,255,0.25); z-index: -1; 
+    }} 
+
 # --- Bagian Navigasi (Sidebar) ---
 st.sidebar.title("🧭 Menu")
 menu = st.sidebar.radio(
