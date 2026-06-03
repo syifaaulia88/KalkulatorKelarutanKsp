@@ -10,7 +10,7 @@ st.markdown("""
     /* Mengubah warna latar belakang Sidebar */
     [data-testid="stSidebar"] {
         background-image: linear-gradient(#1e3c72, #2a5298);
-        color: white;
+        color: pink;
     }
     /* Mengubah warna teks di dalam sidebar agar putih semua */
     [data-testid="stSidebar"] .st-emotion-cache-17w799d, [data-testid="stSidebar"] p {
