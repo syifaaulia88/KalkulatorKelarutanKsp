@@ -11,43 +11,38 @@ st.markdown("""
         background-color: #fff0f3 !important;
     }
 
-    /* Mengubah latar belakang Sidebar menjadi HIJAU PASTEL */
     [data-testid="stSidebar"] {
         background-color: #e2f0d9 !important; /* Hijau pastel lembut */
     }
     
-    /* Mengubah warna teks judul "Menu Kalkulator" menjadi PINK TUA */
     .judul-menu {
-        color: #d81b60 !important; /* Pink tua */
+        color: #d81b60 !important;
         font-size: 26px;
         font-weight: bold;
         margin-bottom: 25px;
         margin-top: -20px;
     }
     
-    /* Mengubah gaya tombol di sidebar (Warna PINK TUA & Membulat) */
     [data-testid="stSidebar"] .stButton>button {
-        background-color: #d81b60 !important; /* Pink tua */
+        background-color: #d81b60 !important;
         color: white !important;
-        border-radius: 15px !important; /* Membuat sudut membulat */
+        border-radius: 15px !important;
         border: none !important;
         padding: 10px 20px !important;
         font-size: 15px !important;
         font-weight: bold !important;
-        width: auto !important; /* Lebar otomatis mengikuti panjang teks */
+        width: auto !important;
         display: block !important;
-        margin-bottom: -5px !important; /* Jarak antar tombol */
+        margin-bottom: -5px !important;
         box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
         transition: 0.2s;
     }
     
-    /* Efek saat tombol di sidebar disentuh kursor (Hover) */
     [data-testid="stSidebar"] .stButton>button:hover {
-        background-color: #c2185b !important; /* Pink lebih gelap saat di-hover */
+        background-color: #c2185b !important;
         transform: scale(1.03);
     }
     
-    /* Merapikan tampilan container input di layar utama */
     .stHeader h2 {
         color: #d81b60;
     }
@@ -93,9 +88,7 @@ Selamat menggunakan, dan semoga bermanfaat!
 
     """)
 
-# ==========================================
 # FITUR 1: KALKULATOR KELARUTAN & KSP
-# ==========================================
 elif page == "Kalkulator Ksp":
     st.title("🧪 ChemSolv: Smart Solution for Solubility")
     st.subheader("📲 Kalkulator Kelarutan dan Ksp")
@@ -162,9 +155,7 @@ elif page == "Kalkulator Ksp":
             st.info("Rumus yang digunakan:")
             st.latex(rumus)
 
-# ==========================================
 # FITUR 2: PREDIKSI ENDAPAN (Qsp vs Ksp)
-# ==========================================
 elif page == "Prediksi Endapan":
     st.title("🧪 ChemSolv: Smart Solution for Solubility")
     st.subheader("⬇️ Prediksi Endapan")
@@ -204,7 +195,7 @@ elif page == "Prediksi Endapan":
         else:
             st.success("Hasil: Qsp < Ksp. **Tidak Terjadi Endapan** (Semua larut). 💧")
 
-#OKE#
+# PAGE TENTANG KAMI PERKENALAN NAMA ANGGOTA KELOMPOK
 elif page == "Tentang Kami":
     st.title("🧪 ChemSolv: Smart Solution for Solubility")
     st.write("""
