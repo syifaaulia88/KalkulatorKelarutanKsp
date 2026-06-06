@@ -1,13 +1,12 @@
 import streamlit as st
 import math
 
-# Konfigurasi Halaman Web
+# Halaman Web
 st.set_page_config(page_title="ChemSolv: Smart Solution for Solubility", layout="wide", page_icon="🧪")
 
-# 2. Injeksi CSS Kustom (Sidebar Hijau Pastel, Menu & Tombol Pink Tua)
+# CSS Kustom
 st.markdown("""
     <style>
-    /* Mengubah latar belakang layar utama menjadi Pink Soft/Pastel agar tidak putih kaku */
     [data-testid="stAppViewContainer"] {
         background-color: #fff0f3 !important;
     }
