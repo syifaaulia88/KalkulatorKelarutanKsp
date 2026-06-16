@@ -28,7 +28,8 @@ st.markdown("""
         font-size: 28px;
         font-weight: bold;
         margin-bottom: 20px;
-        margin-top: -20px;
+        margin-top: 5px;
+        text-align: center;
     }
     
     [data-testid="stSidebar"] .stButton>button {
@@ -39,9 +40,9 @@ st.markdown("""
         padding: 10px 20px !important;
         font-size: 15px !important;
         font-weight: bold !important;
-        width: auto !important;
+        width: 100% !important; /* Membuat tombol menu melebar rapi seragam */
         display: block !important;
-        margin-bottom: -5px !important;
+        margin-bottom: 5px !important;
         box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
         transition: 0.2s;
     }
