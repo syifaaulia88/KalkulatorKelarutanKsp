@@ -4,7 +4,7 @@ import math
 # Halaman Web
 st.set_page_config(page_title="ChemSolv: Smart Solution for Solubility", layout="wide", page_icon="🧪")
 
-# CSS Kustom (Warna judul menu gelap awal, emotikon sejajar, dan tombol seragam)
+# CSS Kustom
 st.markdown("""
     <style>
     [data-testid="stAppViewContainer"] {
@@ -12,10 +12,9 @@ st.markdown("""
     }
 
     [data-testid="stSidebar"] {
-        background-color: #e2f0d9 !important; /* Hijau pastel lembut */
+        background-color: #e2f0d9 !important;
     }
     
-    /* Menyamakan posisi atas (padding) antara main area dan sidebar */
     .block-container {
         padding-top: 2.5rem !important;
     }
@@ -23,7 +22,6 @@ st.markdown("""
         padding-top: 2.5rem !important;
     }
     
-    /* Tulisan Menu ChemSolv warna gelap awal & emotikon sejajar sempurna */
     .judul-menu {
         color: #31333F !important; 
         font-size: 24px; 
@@ -37,7 +35,6 @@ st.markdown("""
         white-space: nowrap; 
     }
     
-    /* Gaya untuk semua tombol di sidebar agar seragam dan rapi */
     [data-testid="stSidebar"] div[data-testid="stButton"] button {
         background-color: #d81b60 !important;
         color: white !important;
@@ -61,14 +58,13 @@ st.markdown("""
     .stHeader h2 {
         color: #d81b60;
     }
-    /* 1. Memperbesar Judul/Header Expander saat ditutup/dibuka */
+
     [data-testid="stExpander"] details summary p {
         font-size: 18px !important;  /* Ubah angka ini jika ingin lebih besar/kecil */
         font-weight: bold !important;
         color: #31333F !important;
     }
     
-    /* 2. Memperbesar Teks Isi/Konten di dalam Expander */
     [data-testid="stExpander"] [data-testid="stMarkdownContainer"] p {
         font-size: 16px !important;  /* Ubah angka ini jika ingin lebih besar/kecil */
         line-height: 1.6 !important; /* Mengatur jarak antar baris kalimat agar rapi */
@@ -77,7 +73,6 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# Inisialisasi session state untuk halaman jika belum ada
 if 'page' not in st.session_state: 
     st.session_state['page'] = "Home" 
 
