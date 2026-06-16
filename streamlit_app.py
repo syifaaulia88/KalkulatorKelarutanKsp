@@ -14,6 +14,14 @@ st.markdown("""
     [data-testid="stSidebar"] {
         background-color: #e2f0d9 !important; /* Hijau pastel lembut */
     }
+
+    /* Menyamakan posisi atas (padding) antara main area dan sidebar */
+    .block-container {
+        padding-top: 2.5rem !important;
+    }
+    [data-testid="stSidebarUserContent"] {
+        padding-top: 2.5rem !important;
+    }
     
     .judul-menu {
         color: #d81b60 !important;
