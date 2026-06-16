@@ -4,7 +4,7 @@ import math
 # Halaman Web
 st.set_page_config(page_title="ChemSolv: Smart Solution for Solubility", layout="wide", page_icon="🧪")
 
-# CSS Kustom
+# CSS Kustom (Warna judul menu gelap awal, emotikon sejajar, dan tombol seragam)
 st.markdown("""
     <style>
     [data-testid="stAppViewContainer"] {
@@ -14,7 +14,7 @@ st.markdown("""
     [data-testid="stSidebar"] {
         background-color: #e2f0d9 !important; /* Hijau pastel lembut */
     }
-
+    
     /* Menyamakan posisi atas (padding) antara main area dan sidebar */
     .block-container {
         padding-top: 2.5rem !important;
@@ -23,16 +23,22 @@ st.markdown("""
         padding-top: 2.5rem !important;
     }
     
+    /* Tulisan Menu ChemSolv warna gelap awal & emotikon sejajar sempurna */
     .judul-menu {
-        color: #d81b60 !important;
-        font-size: 28px;
+        color: #31333F !important; 
+        font-size: 24px; 
         font-weight: bold;
         margin-bottom: 20px;
         margin-top: 5px;
-        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px; 
+        white-space: nowrap; 
     }
     
-    [data-testid="stSidebar"] .stButton>button {
+    /* Gaya untuk semua tombol di sidebar agar seragam dan rapi */
+    [data-testid="stSidebar"] div[data-testid="stButton"] button {
         background-color: #d81b60 !important;
         color: white !important;
         border-radius: 15px !important;
@@ -40,14 +46,14 @@ st.markdown("""
         padding: 10px 20px !important;
         font-size: 15px !important;
         font-weight: bold !important;
-        width: 100% !important; /* Membuat tombol menu melebar rapi seragam */
+        width: 100% !important; 
         display: block !important;
         margin-bottom: 5px !important;
         box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
         transition: 0.2s;
     }
     
-    [data-testid="stSidebar"] .stButton>button:hover {
+    [data-testid="stSidebar"] div[data-testid="stButton"] button:hover {
         background-color: #c2185b !important;
         transform: scale(1.03);
     }
@@ -55,47 +61,80 @@ st.markdown("""
     .stHeader h2 {
         color: #d81b60;
     }
+    /* 1. Memperbesar Judul/Header Expander saat ditutup/dibuka */
+    [data-testid="stExpander"] details summary p {
+        font-size: 18px !important;  /* Ubah angka ini jika ingin lebih besar/kecil */
+        font-weight: bold !important;
+        color: #31333F !important;
+    }
+    
+    /* 2. Memperbesar Teks Isi/Konten di dalam Expander */
+    [data-testid="stExpander"] [data-testid="stMarkdownContainer"] p {
+        font-size: 16px !important;  /* Ubah angka ini jika ingin lebih besar/kecil */
+        line-height: 1.6 !important; /* Mengatur jarak antar baris kalimat agar rapi */
+        color: #31333F !important;
+    }
     </style>
 """, unsafe_allow_html=True)
 
+# Inisialisasi session state untuk halaman jika belum ada
 if 'page' not in st.session_state: 
     st.session_state['page'] = "Home" 
+
+# --- KONTROL SIDEBAR ---
 with st.sidebar:
-    st.title("✨ Menu ChemSolv ✨")
-    if st.button("Home"): 
+    st.markdown('<div class="judul-menu">✨ Menu ChemSolv ✨</div>', unsafe_allow_html=True)
+    
+    if st.button("Home", use_container_width=True): 
         st.session_state['page'] = "Home"
     
-    if st.button("Kalkulator Ksp"): 
+    if st.button("Kalkulator Ksp", use_container_width=True): 
         st.session_state['page'] = "Kalkulator Ksp"
         
-    if st.button("Prediksi Endapan"):
+    if st.button("Prediksi Endapan", use_container_width=True):
         st.session_state['page'] = 'Prediksi Endapan'
         
-    if st.button("Tentang Kami"):
+    if st.button("Tentang Kami", use_container_width=True):
         st.session_state['page'] = 'Tentang Kami'
-    page = st.session_state['page'] 
+        
     st.sidebar.divider()
 
+page = st.session_state['page']
 
+# --- KONTEN HALAMAN ---
 if page == "Home":
     st.title("🧪 ChemSolv: Smart Solution for Solubility")
     st.subheader("Selamat Datang di aplikasi ChemSolv!!")
-    st.write("""
-
-Dalam kimia fisik dan kimia analisis, memahami serta menghitung kesetimbangan larutan merupakan keterampilan dasar yang sangat penting. Materi kesetimbangan, mulai dari menentukan kelarutan suatu zat hingga memprediksi kapan endapan akan mulai terbentuk, menjadi bagian tak terpisahkan dari praktikum maupun kegiatan analisis di laboratorium. Namun, tidak jarang pelajar atau praktisi merasa kesulitan ketika harus melakukan perhitungan ini secara manual, apalagi saat menghadapi rumus stoikiometri ion yang berbeda-beda serta perhitungan eksponen yang cukup rumit.
-​Sebagai respons terhadap kebutuhan tersebut, kami menghadirkan ChemSolv - Kalkulator Ksp, sebuah aplikasi berbasis web yang dirancang khusus untuk membantu pengguna dalam melakukan berbagai perhitungan kesetimbangan kimia larutan dengan cepat dan akurat. Aplikasi ini mencakup fitur:
-
-* Perhitungan Kelarutan (s) secara otomatis berdasarkan nilai Ksp yang diketahui.
-* Perhitungan Konstanta Ksp secara instan dari data kelarutan senyawa.
-* Prediksi Pembentukan Endapan dengan membandingkan nilai Quotient Reaksi (Qsp) dan Ksp.
-* Dukungan Multi-Stoikiometri untuk berbagai bentuk rumus senyawa (seperti tipe AB, AB₂, AB₃, hingga A₂B₃).
-
-​Aplikasi ini dikembangkan sebagai bagian dari Tugas Akhir LPK (Laporan Praktikum Kimia) dengan tujuan memberikan kontribusi nyata dalam pembelajaran kimia larutan dan aktivitas laboratorium, khususnya di bidang kesetimbangan kimia. Dengan antarmuka yang sederhana, estetis, dan fungsional, diharapkan ChemSolv dapat menjadi alat bantu yang andal bagi siswa, mahasiswa, guru, analis, maupun siapa saja yang sedang mempelajari atau bekerja dengan kimia larutan.
-​Gunakan aplikasi ini untuk memperkuat pemahaman konsep dan meningkatkan ketelitian dalam perhitungan kimia Anda. 
-
-Selamat menggunakan, dan semoga bermanfaat!
-
-    """)
+    st.markdown("Klik pada setiap kotak di bawah ini untuk melihat deskripsi lengkap:")
+    st.divider()
+    
+    # 1. Box Lipat: Deskripsi Web
+    with st.expander("Apa Itu ChemSolv 🤔❓️", expanded=False):
+        st.write("""
+        Dalam kimia fisik dan kimia analisis, memahami serta menghitung kesetimbangan larutan merupakan keterampilan dasar yang sangat penting. Materi kesetimbangan, mulai dari menentukan kelarutan suatu zat hingga memprediksi kapan endapan akan mulai terbentuk, menjadi bagian tak terpisahkan dari praktikum maupun kegiatan analisis di laboratorium. Namun, tidak jarang pelajar atau praktisi merasa kesulitan ketika harus melakukan perhitungan ini secara manual, apalagi saat menghadapi rumus stoikiometri ion yang berbeda-beda serta perhitungan eksponen yang cukup rumit.
+        
+        Sebagai respons terhadap kebutuhan tersebut, kami menghadirkan **ChemSolv**, sebuah aplikasi berbasis web yang dirancang khusus untuk membantu pengguna dalam melakukan berbagai perhitungan kesetimbangan kimia larutan dengan cepat dan akurat.
+        """)
+        
+    # 2. Box Lipat: Deskripsi Fitur ke 1
+    with st.expander("📲 Fitur Kalkulator Kelarutan & Ksp", expanded=False):
+        st.write("""
+        Fitur ini dirancang untuk memudahkan pengguna dalam melakukan konversi dan perhitungan otomatis antara nilai Kelarutan ($s$) dan nilai Konstanta Hasil Kali Kelarutan ($K_{sp}$).
+        
+        * **Hitung Kelarutan (s) dari Ksp:** Membantu mencari konsentrasi maksimum zat yang dapat larut dalam kondisi jenuh.
+        * **Hitung Ksp dari Kelarutan (s):** Menghitung nilai konstanta kesetimbangan berdasarkan data eksperimen kelarutan senyawa secara instan.
+        """)
+        
+    # 3. Box Lipat: Deskripsi Fitur ke 2
+    with st.expander("⬇️ Fitur Prediksi Endapan", expanded=False):
+        st.write("""
+        Fitur ini berfungsi untuk memprediksi apakah suatu campuran larutan kation dan anion akan menghasilkan endapan baru atau tidak. Perhitungan dilakukan secara otomatis dengan membandingkan nilai **Quotient Reaksi ($Q_{sp}$)** terhadap nilai **$K_{sp}$** senyawa bawaan.
+        
+        * Jika $Q_{sp} < K_{sp}$: Belum Terjadi Endapan (Semua Larut).
+        * Jika $Q_{sp} = K_{sp}$: Larutan Tepat Jenuh.
+        * Jika $Q_{sp} > K_{sp}$: Terjadi Endapan (Lewat Jenuh).
+        """)
+        
 
 # FITUR 1: KALKULATOR KELARUTAN & KSP
 elif page == "Kalkulator Ksp":
@@ -117,9 +156,9 @@ elif page == "Kalkulator Ksp":
     # Logika Perhitungan: Kelarutan (s) dari Ksp
     if mode == "Hitung Kelarutan (s) dari nilai Ksp":
         ksp_val = st.number_input("**Masukkan Nilai Ksp {Gunakan format e (e adalah × 10 pangkat), contoh: 1.0e-10}:**", 
-                                  value=1.0e-10, format="%.2e", step=1e-11)
+                                   value=1.0e-10, format="%.2e", step=1e-11)
         
-        if st.button("Hitung Kelarutan (s)"):
+        if st.button("Hitung Kelarutan (s)", use_container_width=True):
             if "AB " in senyawa_type:
                 s = math.sqrt(ksp_val)
                 rumus = r"K_{sp} = s^2 \implies s = \sqrt{K_{sp}}"
@@ -140,13 +179,13 @@ elif page == "Kalkulator Ksp":
     # Logika Perhitungan: Ksp dari Kelarutan (s)
     else:
        s_val = st.number_input(
-    "Masukkan Nilai Kelarutan (s) dalam mol/L (contoh: 1 × 10⁻⁵):",
-    value=1.0e-5,
-    format="%.2e",
-    step=1e-6
-)
-        
-       if st.button("Hitung Nilai Ksp"):
+            "Masukkan Nilai Kelarutan (s) dalam mol/L (contoh: 1 × 10⁻⁵):",
+            value=1.0e-5,
+            format="%.2e",
+            step=1e-6
+       )
+       
+       if st.button("Hitung Nilai Ksp", use_container_width=True):
             if "AB " in senyawa_type:
                 ksp = s_val ** 2
                 rumus = r"K_{sp} = s^2"
@@ -189,7 +228,7 @@ elif page == "Prediksi Endapan":
 
     st.divider()
 
-    if st.button("Hitung & Prediksi"):
+    if st.button("Hitung & Prediksi", use_container_width=True):
         # Menghitung Qsp
         qsp = (konsentrasi_kation ** koefisien_kation) * (konsentrasi_anion ** koefisien_anion)
         
@@ -208,22 +247,18 @@ elif page == "Prediksi Endapan":
 elif page == "Tentang Kami":
     st.title("🧪 ChemSolv: Smart Solution for Solubility")
     st.write("""
-
 👨‍💻 Tim Pengembang
 Aplikasi ini merupakan hasil Proyek Tugas Website untuk mata kuliah Logika Pemrograman Komputer.
 
 👥 Anggota Kelompok:
+- Athiyah Amini Azzahra — 2560587 
+- Ryel Fandralaro — 2560766 
+- Syifa Aulia Farani Pasha — 2560792 
+- Zahra Fitria Sukmawan — 2560809 
+- Zalika Imani Hamida — 2560810 
 
-- Athiyah Amini Azzahra — 2560587  
-- Ryel Fandralaro  — 2560766 
-- Syifa Aulia Farani Pasha   — 2560792  
-- Zahra Fitria Sukmawan  — 2560809  
-- Zalika Imani Hamida  — 2560810  
 Kelas: 1D
-
 🎓 Program Studi: Analisis Kimia
 🏛️ Politeknik AKA Bogor
-
     """)
-
     
