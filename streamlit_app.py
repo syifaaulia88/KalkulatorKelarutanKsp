@@ -25,9 +25,9 @@ st.markdown("""
     
     .judul-menu {
         color: #d81b60 !important;
-        font-size: 26px;
+        font-size: 28px;
         font-weight: bold;
-        margin-bottom: 25px;
+        margin-bottom: 20px;
         margin-top: -20px;
     }
     
