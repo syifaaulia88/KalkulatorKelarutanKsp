@@ -103,7 +103,6 @@ if page == "Home":
     st.markdown("Klik pada setiap kotak di bawah ini untuk melihat deskripsi lengkap:")
     st.divider()
     
-    # 1. Box Lipat: Deskripsi Web
     with st.expander("Apa Itu ChemSolv 🤔❓️", expanded=False):
         st.write("""
         Dalam kimia fisik dan kimia analisis, memahami serta menghitung kesetimbangan larutan merupakan keterampilan dasar yang sangat penting. Materi kesetimbangan, mulai dari menentukan kelarutan suatu zat hingga memprediksi kapan endapan akan mulai terbentuk, menjadi bagian tak terpisahkan dari praktikum maupun kegiatan analisis di laboratorium. Namun, tidak jarang pelajar atau praktisi merasa kesulitan ketika harus melakukan perhitungan ini secara manual, apalagi saat menghadapi rumus stoikiometri ion yang berbeda-beda serta perhitungan eksponen yang cukup rumit.
@@ -111,7 +110,6 @@ if page == "Home":
         Sebagai respons terhadap kebutuhan tersebut, kami menghadirkan **ChemSolv**, sebuah aplikasi berbasis web yang dirancang khusus untuk membantu pengguna dalam melakukan berbagai perhitungan kesetimbangan kimia larutan dengan cepat dan akurat.
         """)
         
-    # 2. Box Lipat: Deskripsi Fitur ke 1
     with st.expander("📲 Fitur Kalkulator Kelarutan & Ksp", expanded=False):
         st.write("""
         Fitur ini dirancang untuk memudahkan pengguna dalam melakukan konversi dan perhitungan otomatis antara nilai Kelarutan ($s$) dan nilai Konstanta Hasil Kali Kelarutan ($K_{sp}$).
@@ -120,7 +118,6 @@ if page == "Home":
         * **Hitung Ksp dari Kelarutan (s):** Menghitung nilai konstanta kesetimbangan berdasarkan data eksperimen kelarutan senyawa secara instan.
         """)
         
-    # 3. Box Lipat: Deskripsi Fitur ke 2
     with st.expander("⬇️ Fitur Prediksi Endapan", expanded=False):
         st.write("""
         Fitur ini berfungsi untuk memprediksi apakah suatu campuran larutan kation dan anion akan menghasilkan endapan baru atau tidak. Perhitungan dilakukan secara otomatis dengan membandingkan nilai **Quotient Reaksi ($Q_{sp}$)** terhadap nilai **$K_{sp}$** senyawa bawaan.
